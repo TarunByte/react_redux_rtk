@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { MdDeleteForever } from "react-icons/md";
 import { useState } from "react";
-// import { addTask, deleteTask, fetchTask } from "../store";
+import { addTask, clearAll, deleteTask, fetchTask } from "../store";
 
 export const Todo = () => {
   const [task, setTask] = useState("");
@@ -27,6 +27,9 @@ export const Todo = () => {
 
   const handleFetchTasks = () => {
     dispatch(fetchTask()); // Fetch tasks from the API
+  };
+  const handleClearAll = () => {
+    dispatch(clearAll());
   };
 
   return (
@@ -67,6 +70,9 @@ export const Todo = () => {
             );
           })}
         </ul>
+        {tasks.length > 0 && (
+          <button onClick={handleClearAll}>Clear All</button>
+        )}
       </div>
     </div>
   );

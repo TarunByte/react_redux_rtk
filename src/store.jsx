@@ -33,10 +33,13 @@ const taskReducer = createSlice({
         (curTask, index) => index !== action.payload
       );
     },
+    clearAll(state) {
+      state.task.length = 0;
+    },
   },
 });
 
-const { addTask, deleteTask } = taskReducer.actions;
+export const { addTask, deleteTask, clearAll } = taskReducer.actions;
 
 //! New Style
 export const store = configureStore({
@@ -55,14 +58,14 @@ console.log(store.dispatch(addTask("Buy Apple")));
 console.log(store.getState());
 
 // The getState method is a synchronous function that returns the current state of a Redux application. It includes the entire state of the application, including all the reducers and their respective states.
-store.dispatch({ type: ADD_TASK, payload: "Buy Apple" });
-console.log("Updated State:", store.getState());
+// store.dispatch({ type: ADD_TASK, payload: "Buy Apple" });
+// console.log("Updated State:", store.getState());
 
-store.dispatch({ type: ADD_TASK, payload: "Buy Mango" });
-console.log("Updated State:", store.getState());
+// store.dispatch({ type: ADD_TASK, payload: "Buy Mango" });
+// console.log("Updated State:", store.getState());
 
-store.dispatch({ type: ADD_TASK, payload: "Buy Banana" });
-console.log("Updated State:", store.getState());
+// store.dispatch({ type: ADD_TASK, payload: "Buy Banana" });
+// console.log("Updated State:", store.getState());
 
 // store.dispatch(addTask("Buy Grapes"));
 // console.log("Updated State:", store.getState());
